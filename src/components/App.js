@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import GlobalStyle from "./styles/globalStyles";
 
 import Header from "./Header";
 import Main from "./Main";
@@ -12,18 +13,21 @@ import Historic from "./Pages/Historic";
 
 export default function App() {
     return(
-        <BrowserRouter>
-            <Header />
-            <Main>
-                <Routes>
-                    <Route path="/" element={ <Login /> } />
-                    <Route path="/cadastro" element={ <Registration /> } />
-                    <Route path="/habitos" element={ <Habits /> } />
-                    <Route path="/hoje" element={ <Today /> } />
-                    <Route path="/historico" element={ <Historic /> } />
-                </Routes>
-            </Main>
-            <Footer />
-        </BrowserRouter>
+        <>
+            <GlobalStyle />
+            <BrowserRouter>
+                <Header />
+                <Main>
+                    <Routes>
+                        <Route path="/" element={ <Login /> } />
+                        <Route path="/cadastro" element={ <Registration /> } />
+                        <Route path="/habitos" element={ <Habits /> } />
+                        <Route path="/hoje" element={ <Today /> } />
+                        <Route path="/historico" element={ <Historic /> } />
+                    </Routes>
+                </Main>
+                <Footer />
+            </BrowserRouter>
+        </>
     )
 }
