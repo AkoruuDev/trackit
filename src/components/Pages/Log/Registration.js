@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import logo from "../../images/logo.png";
 
@@ -14,7 +15,10 @@ export default function Registration() {
                     <Input type="picture" placeholder="foto" />
                     <Button type="submit">Cadastrar</Button>
                 </Form>
-                <Login>Já tem uma conta? Faça login!</Login>
+
+                <Link to="/">
+                    <Login>Já tem uma conta? Faça login!</Login>
+                </Link>
             </Content>
         </MainRegister>
     )
