@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components"
 import logo from "../../images/logo.png"
 
@@ -10,7 +11,10 @@ export default function Login() {
                 <Input type="name" placeholder="e-mail" />
                 <Input type="password" placeholder="senha" />
                 <Button>Entrar</Button>
-                <Register>Não tem uma conta? Cadastre-se!</Register>
+
+                <Link to="/cadastro">
+                    <Register>Não tem uma conta? Cadastre-se!</Register>
+                </Link>
             </Content>
         </MainLogin>
     )
@@ -77,4 +81,9 @@ const Register = styled.p`
     font-size: 18px;
     text-decoration: underline;
     font-style: oblique;
+
+    &&:hover {
+        cursor: pointer;
+        color: #52C6FF;
+    }
 `;
