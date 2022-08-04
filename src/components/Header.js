@@ -18,6 +18,9 @@ const MainHeader = styled.header`
     background-color: blue;
     display: flex;
     justify-content: center;
+    position: fixed;
+    z-index: 0;
+    top: 0;
 `;
 
 const Content = styled.div`
