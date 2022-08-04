@@ -9,6 +9,5 @@ export default function Main({ children }) {
 const MainMain = styled.main`
     width: 100vw;
     height: 100vh;
-    padding-top: 150px;
     background-color: #E5E5E5;
 `;

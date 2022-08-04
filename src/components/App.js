@@ -1,9 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import GlobalStyle from "./styles/globalStyles";
 
-import Header from "./Header";
 import Main from "./Main";
-import Footer from "./Footer";
 
 import Login from "./Pages/Log/Login";
 import Registration from "./Pages/Log/Registration";
@@ -16,7 +14,6 @@ export default function App() {
         <>
             <GlobalStyle />
             <BrowserRouter>
-                <Header />
                 <Main>
                     <Routes>
                         <Route path="/" element={ <Login /> } />
@@ -26,7 +23,6 @@ export default function App() {
                         <Route path="/historico" element={ <Historic /> } />
                     </Routes>
                 </Main>
-                <Footer />
             </BrowserRouter>
         </>
     )
