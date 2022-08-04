@@ -41,6 +41,7 @@ const Image = styled.img`
 `;
 
 const Title = styled.h1`
+    padding-bottom: 20px;
     font-family: 'Playball', cursive;
     font-size: 70px;
     color: #126BA5;
@@ -57,6 +58,10 @@ const Input = styled.input`
     font-family: 'Lexend Deca', sans-serif;
     font-size: 20px;
     color: #D4D4D4;
+
+    &&:hover {
+        background-color: #F1F1F1;
+    }
 `;
 
 const Button = styled.div`
@@ -73,6 +78,13 @@ const Button = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
+
+    &&:hover {
+        cursor: pointer;
+        background-color: #52C6FF;
+        box-shadow: 0 1px 4px 1px gray;
+        color: black;
+    }
 `;
 
 const Register = styled.p`
