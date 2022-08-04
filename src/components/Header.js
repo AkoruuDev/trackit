@@ -13,9 +13,9 @@ export default function Header() {
 
 const MainHeader = styled.header`
     width: 100vw;
-    heigth: 0px;
     padding: 20px;
     background-color: blue;
+    box-shadow: 0 4px 40px 4px gray;
     display: flex;
     justify-content: center;
     position: fixed;
