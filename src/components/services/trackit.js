@@ -4,17 +4,17 @@ const BASE_URL = 'https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit';
 
 
 function signUp() {
-    const promise = axios.get(`${BASE_URL}/auth/sign-up`);
+    const promise = axios.post(`${BASE_URL}/auth/sign-up`);
     return promise;
 }
 
 function doLogin() {
-    const promise = axios.get(`${BASE_URL}/auth/login`);
+    const promise = axios.post(`${BASE_URL}/auth/login`);
     return promise;    
 }
 
 function createHabits() {
-    const promise = axios.get(`${BASE_URL}/habits`);
+    const promise = axios.post(`${BASE_URL}/habits`);
     return promise;
 }
 
@@ -24,7 +24,7 @@ function generateHabits() {
 }
 
 function deleteHabits(HABIT_ID) {
-    const promise = axios.get(`${BASE_URL}/habits/${HABIT_ID}`);
+    const promise = axios.delete(`${BASE_URL}/habits/${HABIT_ID}`);
     return promise;
 }
 
@@ -34,12 +34,12 @@ function getHabits() {
 }
 
 function doneHabit(HABIT_ID) {
-    const promise = axios.get(`${BASE_URL}/habits/${HABIT_ID}/check`);
+    const promise = axios.post(`${BASE_URL}/habits/${HABIT_ID}/check`);
     return promise;
 }
 
 function undoneHabit(HABIT_ID) {
-    const promise = axios.get(`${BASE_URL}/habits/${HABIT_ID}/uncheck`);
+    const promise = axios.post(`${BASE_URL}/habits/${HABIT_ID}/uncheck`);
     return promise;
 }
 
