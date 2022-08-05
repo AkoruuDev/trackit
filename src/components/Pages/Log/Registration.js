@@ -1,19 +1,73 @@
-import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import logo from "../../images/logo.png";
+import { signUp } from "../../services/trackit";
 
 export default function Registration() {
+    const [register, setRegister] = useState([]);
+    const [go, setGo] = useState("dontGo");
+    const navigate = useNavigate()
+
+    function addRegisterValue({ value, name }) {
+        setRegister({
+          ...register,
+          [name]: value,
+        });
+        console.log(register)
+    }
+
+    function makeNewRegister() {
+        console.log(register);
+        setGo("go");
+        navigate('/');
+    }
+
+    useEffect(() => {
+        if (go === "go") {
+            console.log(register);
+            signUp(register).then(res => {
+                console.log(res.data)
+                navigate('/');
+            });
+        }
+    }, [go]);
+
     return (
         <MainRegister>
             <Content>
                 <Image src={logo} alt="logotipo" />
                 <Title>TrackIt</Title>
                 <Form>
-                    <Input type="email" placeholder="e-mail" />
-                    <Input type="password" placeholder="senha" />
-                    <Input type="name" placeholder="nome" />
-                    <Input type="picture" placeholder="foto" />
-                    <Button type="submit">Cadastrar</Button>
+                    <Input type="email" name="email" onChange=
+                        {(e) => addRegisterValue({
+                                name: e.target.name,
+                                value: e.target.value,
+                            })
+                        } 
+                    placeholder="e-mail" />
+                    <Input type="password" name="password" onChange=
+                        {(e) => addRegisterValue({
+                                name: e.target.name,
+                                value: e.target.value,
+                            })
+                        } 
+                    placeholder="senha" />
+                    <Input type="name" name="name" onChange=
+                        {(e) => addRegisterValue({
+                                name: e.target.name,
+                                value: e.target.value,
+                            })
+                        } 
+                    placeholder="nome" />
+                    <Input type="picture" name="image" onChange=
+                        {(e) => addRegisterValue({
+                                name: e.target.name,
+                                value: e.target.value,
+                            })
+                        } 
+                    placeholder="foto" />
+                    <Button type="submit" onClick={makeNewRegister}>Cadastrar</Button>
                 </Form>
 
                 <Link to="/">

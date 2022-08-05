@@ -3,8 +3,8 @@ import axios from "axios";
 const BASE_URL = 'https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit';
 
 
-function signUp() {
-    const promise = axios.post(`${BASE_URL}/auth/sign-up`);
+function signUp(register) {
+    const promise = axios.post(`${BASE_URL}/auth/sign-up`, register);
     return promise;
 }
 
