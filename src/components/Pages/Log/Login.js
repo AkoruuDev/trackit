@@ -18,9 +18,16 @@ export default function Login() {
     
     useEffect(() => {
         if(enviate) {
-            doLogin(login).then(res => {
+            doLogin(login)
+            .then(res => {
                 console.log(res.data);
+                navigate('/hoje')
             })
+            .catch(() => {
+                alert('Login ou senha incorretos, tente novamente')
+                window.location.reload();
+                navigate('/')
+            });
         }
     }, [enviate])
 

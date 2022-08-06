@@ -18,8 +18,14 @@ export default function Registration() {
 
     useEffect(() => {
         if (save) {
-            signUp(register).then(() => {
+            signUp(register)
+            .then(() => {
                 navigate('/');
+            })
+            .catch(() => {
+                alert('Todos os campos devem ser preenchidos corretamente, tente novamente')
+                window.location.reload();
+                navigate('/cadastro')
             });
         }
     }, [save]);
