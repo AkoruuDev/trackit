@@ -1,22 +1,73 @@
-import styled from "styled-components"
+import { useState } from "react";
+import styled from "styled-components";
 
-export default function Template() {
+let days = [];
+
+function DayBox({d, n, selectDay}) {
+    const [color, setColor] = useState(false);
+
+    function toggleColor({ day }) {
+        setColor(!color);
+        selectDay({ day });
+    }
+
+    if(color) {
+        return <DaySelected onClick={(e) => toggleColor({ day: n })}>{d}</DaySelected>;
+    }
+    return <Day onClick={(e) => toggleColor({ day: n })}>{d}</Day>;
+}
+
+export default function Template({
+    habs,
+    setHabs,
+    habts
+}) {
+    function addHabit({ value, name }) {
+        setHabs({
+          ...habs,
+          [name]: value,
+        });
+        console.log(habs)
+    }
+
+    function selectDay({ day }) {
+        if (days.includes(day)) {
+            days.splice(days.indexOf(day), 1);
+        } else {
+            days.push(day);
+        }
+        console.log(days);
+    }
+
+    function submitHabit() {
+        habts.push({
+            habs,
+            days: days
+        })
+    }
+
     return(
         <Habit>
             <Form>
-                <Input type="text" placeholder="nome do hábito"/>
+                <Input type="text" name="name" onChange=
+                    {(e) => addHabit({
+                        name: e.target.name,
+                        value: e.target.value,
+                    })
+                }
+                placeholder="nome do hábito"/>
                 <Select>
-                    <Day>D</Day>
-                    <Day>S</Day>
-                    <Day>T</Day>
-                    <Day>Q</Day>
-                    <Day>Q</Day>
-                    <Day>S</Day>
-                    <Day>S</Day>
+                    <DayBox d="D" n={0} selectDay={selectDay} />
+                    <DayBox d="S" n={1} selectDay={selectDay} />
+                    <DayBox d="T" n={2} selectDay={selectDay} />
+                    <DayBox d="Q" n={3} selectDay={selectDay} />
+                    <DayBox d="Q" n={4} selectDay={selectDay} />
+                    <DayBox d="S" n={5} selectDay={selectDay} />
+                    <DayBox d="S" n={6} selectDay={selectDay} />
                 </Select>
                 <FinishBox>
                     <Cancel type="reset">Cancelar</Cancel>
-                    <Save type="submit">Salvar</Save>
+                    <Save type="submit" onClick={submitHabit}>Salvar</Save>
                 </FinishBox>
             </Form>
         </Habit>
@@ -71,6 +122,11 @@ const Day = styled.div`
     justify-content: center;
     align-items: center;
 `;
+
+const DaySelected = styled(Day)`
+    background-color: #CFCFCF;
+    color: #FFFFFF;
+`
 
 const FinishBox = styled.div`
     width: 100%;

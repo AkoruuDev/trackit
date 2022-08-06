@@ -5,12 +5,14 @@ import Footer from "../../Footer";
 import Template from "./Template";
 import { useState } from "react";
 
-let habs = [];
+const habts = [];
 
 export default function Habits() {
+    const [habs, setHabs] = useState([])
     const [add, setAdd] = useState(false);
-
-    console.log(habs.length);
+    
+    console.log(habts.length);
+    console.log(habts)
     return (
         <MainHabits>
             <Header />
@@ -19,10 +21,10 @@ export default function Habits() {
                     <Title>Meus Habitos</Title>
                     <Button onClick={() => setAdd(!add)}>+</Button>
                 </TextBox>
-                {add ? <Template /> : ""}
-                {habs.length === 0
+                {add ? <Template habs={habs} setHabs={setHabs} habts={habts}/> : ""}
+                {habts.length === 0
                  ? <Text>Você não tem nenhum hábito cadastrado ainda. Adicione um hábito para começar a trackear!</Text>
-                 : habs.map((hab, i) =>
+                 : habts.map((hab, i) =>
                     <p key={i}>{hab}</p>
                  )
                 }
