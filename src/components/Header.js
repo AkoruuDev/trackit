@@ -1,11 +1,12 @@
 import styled from "styled-components"
+let imageProfile = "https://img.freepik.com/fotos-gratis/imagem-aproximada-em-tons-de-cinza-de-uma-aguia-careca-americana-em-um-fundo-escuro_181624-31795.jpg?w=2000";
 
 export default function Header() {
     return (
         <MainHeader>
             <Content>
                 <Title>TrackIt</Title>
-                <Profile src="" alt="profile" />
+                <Profile src={imageProfile} alt="profile" />
             </Content>
         </MainHeader>
     )

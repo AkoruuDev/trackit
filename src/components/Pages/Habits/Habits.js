@@ -1,9 +1,13 @@
 import styled from "styled-components";
 
-import Header from "../Header";
-import Footer from "../Footer";
+import Header from "../../Header";
+import Footer from "../../Footer";
+import Template from "./Template";
+
+let habs = [];
 
 export default function Habits() {
+    console.log(habs.length);
     return (
         <MainHabits>
             <Header />
@@ -12,7 +16,13 @@ export default function Habits() {
                     <Title>Meus Habitos</Title>
                     <Button>+</Button>
                 </TextBox>
-                <Text>Você não tem nenhum hábito cadastrado ainda. Adicione um hábito para começar a trackear!</Text>
+                {<Template />}
+                {habs.length === 0
+                 ? <Text>Você não tem nenhum hábito cadastrado ainda. Adicione um hábito para começar a trackear!</Text>
+                 : habs.map((hab, i) =>
+                    <p key={i}>{hab}</p>
+                 )
+                }
             </Content>
             <Footer />
         </MainHabits>

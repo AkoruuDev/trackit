@@ -8,13 +8,13 @@ function signUp(register) {
     return promise;
 }
 
-function doLogin() {
-    const promise = axios.post(`${BASE_URL}/auth/login`);
+function doLogin(login) {
+    const promise = axios.post(`${BASE_URL}/auth/login`, login);
     return promise;    
 }
 
-function createHabits() {
-    const promise = axios.post(`${BASE_URL}/habits`);
+function createHabits(newHabit) {
+    const promise = axios.post(`${BASE_URL}/habits`, newHabit);
     return promise;
 }
 

@@ -5,7 +5,7 @@ import Main from "./Main";
 
 import Login from "./Pages/Log/Login";
 import Registration from "./Pages/Log/Registration";
-import Habits from "./Pages/Habits";
+import Habits from "./Pages/Habits/Habits";
 import Today from "./Pages/Today";
 import Historic from "./Pages/Historic";
 
