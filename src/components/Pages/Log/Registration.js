@@ -14,12 +14,11 @@ export default function Registration() {
           ...register,
           [name]: value,
         });
-        console.log(register)
     }
 
     useEffect(() => {
         if (save) {
-            signUp(register).then(res => {
+            signUp(register).then(() => {
                 navigate('/');
             });
         }

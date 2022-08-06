@@ -7,3 +7,12 @@ Create New Register
     password: "123456"
     updatedAt: "2022-08-06T21:50:34.650Z"
     [[Prototype]]: Object
+
+Make Login
+    email: "naufrago@gmail.com"
+    id: 5106
+    image: "http://minha-foto-linda.png"
+    name: "Wilsom"
+    password: "123456"
+    token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NTEwNiwiaWF0IjoxNjU5ODI0MDA5fQ.Dx_FLecga-8PeZlTNEZRnkxf3tdD6RA_NriYTOCP6k4"
+    [[Prototype]]: Object

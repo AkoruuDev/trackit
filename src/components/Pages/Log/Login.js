@@ -1,16 +1,49 @@
-import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components"
 import logo from "../../images/logo.png"
+import { doLogin } from "../../services/trackit";
 
 export default function Login() {
+    const [login, setLogin] = useState([]);
+    const [enviate, setEnviate] = useState(false);
+    const navigate = useNavigate()
+
+    function makeLogin({ value, name }) {
+        setLogin({
+          ...login,
+          [name]: value,
+        });
+    }
+    
+    useEffect(() => {
+        if(enviate) {
+            doLogin(login).then(res => {
+                console.log(res.data);
+            })
+        }
+    }, [enviate])
+
     return (
         <MainLogin>
             <Content>
                 <Image src={logo} alt="logotipo" />
                 <Title>TrackIt</Title>
-                <Input type="name" placeholder="e-mail" />
-                <Input type="password" placeholder="senha" />
-                <Button>Entrar</Button>
+                <Input type="email" name="email" onChange=
+                    {(e) => makeLogin({
+                            name: e.target.name,
+                            value: e.target.value
+                        })
+                    } 
+                placeholder="e-mail" />
+                <Input type="password" name="password" onChange=
+                    {(e) => makeLogin({
+                            name: e.target.name,
+                            value: e.target.value
+                        })
+                    } 
+                placeholder="senha" />
+                <Button onClick={() => setEnviate(true)}>Entrar</Button>
 
                 <Link to="/cadastro">
                     <Register>Não tem uma conta? Cadastre-se!</Register>
