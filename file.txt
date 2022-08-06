@@ -1,0 +1,9 @@
+Create New Register
+    createdAt: "2022-08-06T21:50:34.650Z"
+    email: "naufrago@gmail.com"
+    id: 5106
+    image: "http://minha-foto-linda.png"
+    name: "Wilsom"
+    password: "123456"
+    updatedAt: "2022-08-06T21:50:34.650Z"
+    [[Prototype]]: Object

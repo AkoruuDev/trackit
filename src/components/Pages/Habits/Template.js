@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styled from "styled-components";
+import { createHabits } from "../../services/trackit";
 
 let days = [];
 
@@ -19,9 +20,18 @@ function DayBox({d, n, selectDay}) {
 
 export default function Template({
     habs,
-    setHabs,
-    habts
+    setHabs
 }) {
+    const [submitThis, setSubmitThis] = useState(false);
+
+    useEffect(() => {
+        console.log("oi")
+        if (submitThis) {
+            createHabits({habs, days}).then(res => console.log(res.data))
+            createHabits({habs, days}).catch(res => console.log(res.data))
+        }
+    }, [submitThis])
+
     function addHabit({ value, name }) {
         setHabs({
           ...habs,
@@ -37,13 +47,6 @@ export default function Template({
             days.push(day);
         }
         console.log(days);
-    }
-
-    function submitHabit() {
-        habts.push({
-            habs,
-            days: days
-        })
     }
 
     return(
@@ -67,7 +70,7 @@ export default function Template({
                 </Select>
                 <FinishBox>
                     <Cancel type="reset">Cancelar</Cancel>
-                    <Save type="submit" onClick={submitHabit}>Salvar</Save>
+                    <Save onClick={() => setSubmitThis(true)}>Salvar</Save>
                 </FinishBox>
             </Form>
         </Habit>

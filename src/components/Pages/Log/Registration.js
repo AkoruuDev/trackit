@@ -6,7 +6,7 @@ import { signUp } from "../../services/trackit";
 
 export default function Registration() {
     const [register, setRegister] = useState([]);
-    const [go, setGo] = useState("dontGo");
+    const [save, setSave] = useState(false);
     const navigate = useNavigate()
 
     function addRegisterValue({ value, name }) {
@@ -17,21 +17,13 @@ export default function Registration() {
         console.log(register)
     }
 
-    function makeNewRegister() {
-        console.log(register);
-        setGo("go");
-        navigate('/');
-    }
-
     useEffect(() => {
-        if (go === "go") {
-            console.log(register);
+        if (save) {
             signUp(register).then(res => {
-                console.log(res.data)
                 navigate('/');
             });
         }
-    }, [go]);
+    }, [save]);
 
     return (
         <MainRegister>
@@ -67,7 +59,7 @@ export default function Registration() {
                             })
                         } 
                     placeholder="foto" />
-                    <Button type="submit" onClick={makeNewRegister}>Cadastrar</Button>
+                    <Button onClick={() => setSave(true)}>Cadastrar</Button>
                 </Form>
 
                 <Link to="/">
