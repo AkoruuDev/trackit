@@ -16,3 +16,5 @@ Make Login
     password: "123456"
     token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NTEwNiwiaWF0IjoxNjU5ODI0MDA5fQ.Dx_FLecga-8PeZlTNEZRnkxf3tdD6RA_NriYTOCP6k4"
     [[Prototype]]: Object
+
+axios.get(url, { headers: { Authorization: `Bearer ${USER_ACESS}` } })

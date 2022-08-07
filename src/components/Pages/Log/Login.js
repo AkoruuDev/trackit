@@ -1,13 +1,17 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components"
 import logo from "../../images/logo.png"
+import { AuthContext } from "../../provider/auth";
 import { doLogin } from "../../services/trackit";
 
 export default function Login() {
     const [login, setLogin] = useState([]);
     const [enviate, setEnviate] = useState(false);
-    const navigate = useNavigate()
+    const { user, setUser } = useContext(AuthContext);
+    const navigate = useNavigate();
+
+    console.log(user);
 
     function makeLogin({ value, name }) {
         setLogin({
@@ -21,7 +25,13 @@ export default function Login() {
             doLogin(login)
             .then(res => {
                 console.log(res.data);
-                navigate('/hoje')
+                setUser({
+                    image: res.data.image,
+                    name: res.data.name,
+                    token: res.data.token
+                });
+                navigate('/hoje');
+                console.log(user);
             })
             .catch(() => {
                 alert('Login ou senha incorretos, tente novamente')
