@@ -20,15 +20,18 @@ function DayBox({d, n, selectDay}) {
 
 export default function Template({
     habs,
-    setHabs
+    setHabs,
+    setAdd
 }) {
     const [submitThis, setSubmitThis] = useState(false);
 
     useEffect(() => {
         console.log("oi")
         if (submitThis) {
-            createHabits({habs, days}).then(res => console.log(res.data))
-            createHabits({habs, days}).catch(res => console.log(res.data))
+            console.log("test")
+            createHabits(habs)
+                .then(res => console.log(res.data))
+                .catch(res => console.log(res.data))
         }
     }, [submitThis])
 
@@ -45,8 +48,13 @@ export default function Template({
             days.splice(days.indexOf(day), 1);
         } else {
             days.push(day);
+            setHabs({
+                ...habs,
+                days: days,
+            });
+            console.log(habs)
         }
-        console.log(days);
+        console.log(habs);
     }
 
     return(
@@ -69,7 +77,7 @@ export default function Template({
                     <DayBox d="S" n={6} selectDay={selectDay} />
                 </Select>
                 <FinishBox>
-                    <Cancel type="reset">Cancelar</Cancel>
+                    <Cancel onClick={() => setAdd(false)}>Cancelar</Cancel>
                     <Save onClick={() => setSubmitThis(true)}>Salvar</Save>
                 </FinishBox>
             </Form>

@@ -21,7 +21,7 @@ export default function Habits() {
                     <Title>Meus Habitos</Title>
                     <Button onClick={() => setAdd(!add)}>+</Button>
                 </TextBox>
-                {add ? <Template habs={habs} setHabs={setHabs} habts={habts}/> : ""}
+                {add ? <Template habs={habs} setHabs={setHabs} habts={habts} setAdd={setAdd} /> : ""}
                 {habts.length === 0
                  ? <Text>Você não tem nenhum hábito cadastrado ainda. Adicione um hábito para começar a trackear!</Text>
                  : habts.map((hab, i) =>
