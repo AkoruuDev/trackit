@@ -1,6 +1,6 @@
 import ReactDOM from "react-dom";
 import App from "./components/App";
-import { AuthProvider } from "./components/service/auth";
+import { AuthProvider } from "./components/provider/auth";
 
 ReactDOM.render(
     <AuthProvider>

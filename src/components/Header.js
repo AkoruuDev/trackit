@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import styled from "styled-components"
-import { AuthContext } from "./service/auth";
+import { AuthContext } from "./provider/auth";
 let imageProfile = "https://img.freepik.com/fotos-gratis/imagem-aproximada-em-tons-de-cinza-de-uma-aguia-careca-americana-em-um-fundo-escuro_181624-31795.jpg?w=2000";
 
 export default function Header() {
